@@ -1,12 +1,11 @@
 package com.nav.navigationcircus
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 
 class FragmentB : Fragment() {
@@ -23,13 +22,14 @@ class FragmentB : Fragment() {
     ): View? {
 
 
-        //args.transactionId
+        val txId = args.transactionId
+        Toast.makeText(requireContext(), "arg = $txId", Toast.LENGTH_SHORT).show()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_b, container, false)
     }
 
 
-    //private val args:FragmentBArgs by navArgs()
+    private val args: FragmentBArgs by navArgs()
 
 
     companion object {
