@@ -22,14 +22,14 @@ class FragmentB : Fragment() {
     ): View? {
 
 
-        val txId = args.transactionId
-        Toast.makeText(requireContext(), "arg = $txId", Toast.LENGTH_SHORT).show()
+        //val txId = args.transactionId
+        //Toast.makeText(requireContext(), "arg = $txId", Toast.LENGTH_SHORT).show()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_b, container, false)
     }
 
 
-    private val args: FragmentBArgs by navArgs()
+   // private val args: FragmentBArgs by navArgs()
 
 
     companion object {

@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
 
-class FragmentA : Fragment() {
 
+class BalanceManagerFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -21,27 +21,18 @@ class FragmentA : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a, container, false)
+        return inflater.inflate(R.layout.fragment_balance_manager, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<AppCompatButton>(R.id.btn_fragment_a).setOnClickListener {
-            /*val action =
-                FragmentADirections.actionFragmentAToFragmentB(1)
-
-            findNavController().navigate(action)*/
-
-
+        view.findViewById<AppCompatButton>(R.id.btn_without_cards).setOnClickListener {
+            val action = BalanceManagerFragmentDirections.actionBalanceManagerFragmentToAddCardClabeFragment()
+            findNavController().navigate(action)
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            FragmentA().apply {
-                arguments = Bundle().apply {
-                }
-            }
+        view.findViewById<AppCompatButton>(R.id.btn_with_cards).setOnClickListener {
+            val action = BalanceManagerFragmentDirections.actionBalanceManagerFragmentToPickCard()
+            findNavController().navigate(action)
+        }
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCardClabeFragment"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD CARD / CLABE"
+        android:textSize="40dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_card"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Agregar tarjeta"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_clabe"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Agregar CLABE"/>
+
+</LinearLayout>
