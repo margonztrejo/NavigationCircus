@@ -8,9 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.nav.navigationcircus.core.BaseFragment
+import com.nav.navigationcircus.core.EventResult
 
-class AddCardClabeFragment : Fragment() {
+class AddCardClabeFragment : BaseFragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,8 +26,6 @@ class AddCardClabeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_add_card).setOnClickListener {
-            val action = AddCardClabeFragmentDirections.actionAddCardClabeFragmentToAddCardFragment()
-            findNavController().navigate(action)
         }
 
         view.findViewById<AppCompatButton>(R.id.btn_add_clabe).setOnClickListener {

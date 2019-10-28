@@ -1,15 +1,15 @@
 package com.nav.navigationcircus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
-import androidx.navigation.fragment.findNavController
+import com.nav.navigationcircus.core.BaseFragment
+import com.nav.navigationcircus.core.ScreenEvent
 
 
-class PickCard : Fragment() {
+class PickCard : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,8 +21,18 @@ class PickCard : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_pick_card).setOnClickListener {
-            val action = PickCardDirections.actionPickCardToCashOutFragment()
-            findNavController().navigate(action)
+            navCoordinator?.onScreenEvent(PickCardFragmentEvent.OnCardSelected)
         }
     }
+
+    override fun getScreen(): ScreenEvent {
+        return PickCardNameEvent
+    }
 }
+
+
+sealed class PickCardFragmentEvent: ScreenEvent(){
+    object OnCardSelected: PickCardFragmentEvent()
+}
+
+object PickCardNameEvent: ScreenEvent()

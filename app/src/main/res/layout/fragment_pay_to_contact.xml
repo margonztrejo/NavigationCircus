@@ -3,26 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CashOutFragment"
+    tools:context=".PayToContactFragment"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.appcompat.widget.AppCompatTextView
+        android:text="Pay to Contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CASH OUT"
         android:textSize="40dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_successful_cash_out"
+        android:id="@+id/btn_successful_payment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cash out exitoso"/>
+        android:layout_height="56dp"
+        android:text="Pago exitoso"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_failed_cash_out"
+        android:id="@+id/btn_failed_payment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cash out fallido"/>
+        android:layout_height="56dp"
+        android:text="Pago fallido"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_pick_card"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Seleccionar tarjeta"/>
 
 </LinearLayout>

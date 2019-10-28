@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pay_to_contact_graph"
+    tools:ignore="UnusedNavigation"
+    app:startDestination="@id/permissionsFragment">
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.nav.navigationcircus.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" >
+        <action
+            android:id="@+id/action_contactFragment_to_pickCard2"
+            app:destination="@id/pickCard2" />
+    </fragment>
+    <fragment
+        android:id="@+id/payToContactFragment"
+        android:name="com.nav.navigationcircus.PayToContactFragment"
+        android:label="fragment_pay_to_contact"
+        tools:layout="@layout/fragment_pay_to_contact" >
+        <action
+            android:id="@+id/action_payToContactFragment_to_pickCard2"
+            app:destination="@id/pickCard2" />
+        <action
+            android:id="@+id/action_payToContactFragment_to_ticketFragment"
+            app:destination="@id/ticketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pickCard2"
+        android:name="com.nav.navigationcircus.PickCard"
+        android:label="fragment_pick_card"
+        tools:layout="@layout/fragment_pick_card">
+        <action
+            android:id="@+id/action_pickCard2_to_payToContactFragment"
+            app:destination="@id/payToContactFragment" />
+        <action
+            android:id="@+id/action_pickCard2_to_addCardFragment2"
+            app:destination="@id/addCardFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardFragment2"
+        android:name="com.nav.navigationcircus.AddCardFragment"
+        android:label="fragment_add_card"
+        tools:layout="@layout/fragment_add_card" >
+        <action
+            android:id="@+id/action_addCardFragment2_to_payToContactFragment"
+            app:destination="@id/payToContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.nav.navigationcircus.PermissionsFragment"
+        android:label="fragment_permissions"
+        tools:layout="@layout/fragment_permissions" >
+        <action
+            android:id="@+id/action_permissionsFragment_to_contactFragment"
+            app:destination="@id/contactFragment"/>
+    </fragment>
+    <dialog
+        android:id="@+id/ticketFragment"
+        android:name="com.nav.navigationcircus.TicketFragment"
+        android:label="fragment_ticket"
+        tools:layout="@layout/fragment_ticket" />
+</navigation>

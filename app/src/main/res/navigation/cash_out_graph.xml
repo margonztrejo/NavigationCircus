@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cash_out_graph"
+    tools:ignore="UnusedNavigation">
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="com.nav.navigationcircus.AddCardFragment"
+        android:label="fragment_add_card"
+        tools:layout="@layout/fragment_add_card" >
+        <action
+            app:popUpTo="@id/balanceManagerFragment"
+            android:id="@+id/action_addCardFragment_to_cashOutFragment"
+            app:destination="@id/cashOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addClabeFragment"
+        android:name="com.nav.navigationcircus.AddClabeFragment"
+        android:label="fragment_add_clabe"
+        tools:layout="@layout/fragment_add_clabe" >
+        <action
+            app:popUpToInclusive="true"
+            android:id="@+id/action_addClabeFragment_to_cashOutFragment"
+            app:destination="@id/cashOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardClabeFragment"
+        android:name="com.nav.navigationcircus.AddCardClabeFragment"
+        android:label="fragment_add_card_clabe"
+        tools:layout="@layout/fragment_add_card_clabe" >
+        <action
+            android:id="@+id/action_addCardClabeFragment_to_addClabeFragment"
+            app:destination="@id/addClabeFragment" />
+        <action
+            android:id="@+id/action_addCardClabeFragment_to_addCardFragment"
+            app:destination="@id/addCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pickCard"
+        android:name="com.nav.navigationcircus.PickCard"
+        android:label="fragment_pick_card"
+        tools:layout="@layout/fragment_pick_card" >
+        <action
+            android:id="@+id/action_pickCard_to_cashOutFragment"
+            app:destination="@id/cashOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cashOutFragment"
+        android:name="com.nav.navigationcircus.CashOutFragment"
+        android:label="fragment_cash_out"
+        tools:layout="@layout/fragment_cash_out" >
+        <action
+            android:id="@+id/action_cashOutFragment_to_balanceManagerFragment"
+            app:destination="@id/balanceManagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/balanceManagerFragment"
+        android:name="com.nav.navigationcircus.BalanceManagerFragment"
+        android:label="fragment_balance_manager"
+        tools:layout="@layout/fragment_balance_manager" >
+        <action
+            android:id="@+id/action_balanceManagerFragment_to_addCardClabeFragment"
+            app:destination="@id/addCardClabeFragment" />
+        <action
+            android:id="@+id/action_balanceManagerFragment_to_pickCard"
+            app:destination="@id/pickCard" />
+    </fragment>
+</navigation>

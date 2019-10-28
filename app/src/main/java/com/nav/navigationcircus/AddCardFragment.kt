@@ -29,8 +29,6 @@ class AddCardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_add_card).setOnClickListener {
-            val action = AddCardFragmentDirections.actionAddCardFragmentToCashOutFragment()
-            findNavController().navigate(action)
         }
     }
 }
