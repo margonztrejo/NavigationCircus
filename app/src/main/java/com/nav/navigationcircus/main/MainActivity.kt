@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_host_fragment
         )
         navigationCoordination = NavigationCoordinator(MainGraph(activity = this, controller = navController), navController)
+
+        if(DeepLinkCoordinator.isValidIntent(intent))
+            navigationCoordination!!.onEvent(intent.data!!)
+
         /*val childFragmentManager = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)?.childFragmentManager
         var backStackListener: FragmentManager.OnBackStackChangedListener by Delegates.notNull()
         backStackListener = FragmentManager

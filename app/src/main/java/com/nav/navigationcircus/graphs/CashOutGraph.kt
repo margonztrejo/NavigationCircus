@@ -1,5 +1,6 @@
 package com.nav.navigationcircus.graphs
 
+import android.net.Uri
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import com.nav.navigationcircus.CashOutFragmentEvent
@@ -15,7 +16,7 @@ class CashOutGraph(private val controller: NavController, private val finishFlow
 
     }
 
-    override fun navigateTo() {
+    override fun navigateTo(uri: Uri) {
         if(firstCashOut){
             if(hasCardClabe){
                 graph?.startDestination = R.id.pickCard

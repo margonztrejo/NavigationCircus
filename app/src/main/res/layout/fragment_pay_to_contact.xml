@@ -7,7 +7,20 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:text="Pay to Contact"
+        android:id="@+id/tv_contact"
+        android:text="Contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_card"
+        android:text="Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_amount"
+        android:text="Amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"/>

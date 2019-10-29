@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_contactFragment_to_pickCard2"
             app:destination="@id/pickCard2" />
+        <action
+            android:id="@+id/action_contactFragment_to_payToContactFragment"
+            app:destination="@id/payToContactFragment" />
     </fragment>
     <fragment
         android:id="@+id/payToContactFragment"
@@ -25,6 +28,9 @@
         <action
             android:id="@+id/action_payToContactFragment_to_ticketFragment"
             app:destination="@id/ticketFragment" />
+        <argument
+            android:name="data"
+            app:argType="com.nav.navigationcircus.paytocontact.PayToContactData" />
     </fragment>
     <fragment
         android:id="@+id/pickCard2"

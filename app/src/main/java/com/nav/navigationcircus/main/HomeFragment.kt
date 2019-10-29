@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.net.toUri
 
 import com.nav.navigationcircus.R
 import com.nav.navigationcircus.core.BaseFragment
+import com.nav.navigationcircus.core.Features
 
 class HomeFragment : BaseFragment() {
 
@@ -25,10 +27,12 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_pay_to_contact).setOnClickListener {
-            navCoordinator?.onEvent(NavigationCoordinator.NavigateTo.PAY_TO_CONTACT)
+            val uri = "swapme.mx://".toUri()
+            navCoordinator?.onEvent(uri)
         }
         view.findViewById<AppCompatButton>(R.id.btn_cash_out).setOnClickListener {
-            navCoordinator?.onEvent(NavigationCoordinator.NavigateTo.CASH_OUT)
+            val uri = "swapme.mx://".toUri()
+            navCoordinator?.onEvent(uri)
         }
     }
 

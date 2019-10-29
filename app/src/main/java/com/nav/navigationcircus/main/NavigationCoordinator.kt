@@ -1,12 +1,13 @@
 package com.nav.navigationcircus.main
 
+import android.net.Uri
 import androidx.navigation.NavController
-import com.nav.navigationcircus.core.EventResult
+import com.nav.navigationcircus.core.Features
 import com.nav.navigationcircus.core.ScreenEvent
 import com.nav.navigationcircus.graphs.CashOutGraph
 import com.nav.navigationcircus.graphs.FinishFlowListener
 import com.nav.navigationcircus.graphs.MainGraph
-import com.nav.navigationcircus.graphs.PayToContactGraph
+import com.nav.navigationcircus.paytocontact.PayToContactGraph
 
 
 class NavigationCoordinator(private val mainGraph: MainGraph, private val controller: NavController) : BackStackListener, FinishFlowListener {
@@ -32,22 +33,26 @@ class NavigationCoordinator(private val mainGraph: MainGraph, private val contro
         xx()
     }
 
-    fun onEvent(navigateTo: NavigateTo) {
-        when (navigateTo) {
-            NavigateTo.PAY_TO_CONTACT -> {
-                currentGraph = PayToContactGraph(controller, this)
-                currentGraph?.navigateTo()
+    fun onEvent(uri: Uri) {
+        when (DeepLinkCoordinator.getFeatureFromUri(uri)) {
+            Features.UNHANDLER -> {
+
             }
-            NavigateTo.CASH_OUT -> {
+            Features.PAY_TO_CONTACT -> {
+                currentGraph =
+                    PayToContactGraph(controller, this)
+            }
+            Features.CASH_OUT -> {
                 currentGraph = CashOutGraph(controller, this)
-                currentGraph?.navigateTo()
             }
         }
+
+        currentGraph?.navigateTo(uri)
     }
 
     private fun xx() {
 
-
+        currentGraph = mainGraph
         controller.addOnDestinationChangedListener { controller, destination, arguments ->
 
         }
@@ -58,17 +63,10 @@ class NavigationCoordinator(private val mainGraph: MainGraph, private val contro
         currentGraph?.consumeEvent(screenEvent)
     }
 
-    private var previous: String? = null
     private var currentGraph: FlowGraph? = null
 
-
-    enum class NavigateTo {
-        PAY_TO_CONTACT,
-        CASH_OUT
-    }
-
     interface FlowGraph {
-        fun navigateTo()
+        fun navigateTo(uri: Uri)
         fun consumeEvent(screenEvent: ScreenEvent)
         fun onBack(screenEvent: ScreenEvent)
         fun onNavigationResult(eventResult: ScreenEvent)

@@ -21,7 +21,7 @@ class PickCard : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_pick_card).setOnClickListener {
-            navCoordinator?.onScreenEvent(PickCardFragmentEvent.OnCardSelected)
+            navCoordinator?.onScreenEvent(PickCardFragmentEvent.OnCardSelected("selectedCardToken"))
         }
     }
 
@@ -32,7 +32,7 @@ class PickCard : BaseFragment() {
 
 
 sealed class PickCardFragmentEvent: ScreenEvent(){
-    object OnCardSelected: PickCardFragmentEvent()
+    data class OnCardSelected(val cardToken: String): PickCardFragmentEvent()
 }
 
 object PickCardNameEvent: ScreenEvent()

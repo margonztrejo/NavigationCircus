@@ -1,6 +1,8 @@
 package com.nav.navigationcircus.graphs
 
+import android.net.Uri
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import com.nav.navigationcircus.CashOutFragmentEvent
@@ -14,7 +16,8 @@ import com.nav.navigationcircus.main.NavigationCoordinator
 
 class MainGraph(private val activity: MainActivity, private val controller: NavController): NavigationCoordinator.FlowGraph {
     override fun onNavigationResult(eventResult: ScreenEvent) {
-        navigateTo()
+        val uri = "".toUri()
+        navigateTo(uri)
         when(eventResult){
             is PayToContactFragmentEvent.SuccessfulPayment -> {
                 showTicket(eventResult.ticketInfo)
@@ -41,7 +44,7 @@ class MainGraph(private val activity: MainActivity, private val controller: NavC
         graph = controller.navInflater.inflate(R.navigation.navigation_example)
     }
 
-    override fun navigateTo() {
+    override fun navigateTo(uri: Uri) {
         controller.graph = graph!!
     }
 

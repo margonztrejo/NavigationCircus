@@ -24,7 +24,7 @@ class ContactFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_selected_contact).setOnClickListener {
-            navCoordinator?.onScreenEvent(ContactsFragmentEvent.SelectedContact)
+            navCoordinator?.onScreenEvent(ContactsFragmentEvent.SelectedContact("idUsuarioSeleccionado"))
         }
     }
 
@@ -43,7 +43,7 @@ class ContactFragment : BaseFragment() {
 }
 
 sealed class ContactsFragmentEvent: ScreenEvent(){
-    object SelectedContact: ContactsFragmentEvent()
+    data class SelectedContact(val user: String): ContactsFragmentEvent()
 }
 
 object ContactsFragmentEventName: ScreenEvent()

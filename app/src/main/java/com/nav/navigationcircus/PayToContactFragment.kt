@@ -8,8 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
 import com.nav.navigationcircus.core.BaseFragment
 import com.nav.navigationcircus.core.ScreenEvent
+import com.nav.navigationcircus.paytocontact.PayToContactData
 
 
 class PayToContactFragment : BaseFragment() {
@@ -33,7 +37,18 @@ class PayToContactFragment : BaseFragment() {
         view.findViewById<AppCompatButton>(R.id.btn_pick_card).setOnClickListener {
             navCoordinator?.onScreenEvent(PayToContactFragmentEvent.PickCard)
         }
+
+
+        view.findViewById<AppCompatTextView>(R.id.tv_contact).text = "Contact: ${args.data.user}"
+        view.findViewById<AppCompatTextView>(R.id.tv_card).text = "Card: ${args.data.cardToken}"
+        view.findViewById<AppCompatTextView>(R.id.tv_amount).text = "Amount: ${args.data.amount?:0}"
     }
+
+    override fun getScreen(): ScreenEvent {
+        return PayToContactName
+    }
+
+    private val args: PayToContactFragmentArgs by navArgs()
 
     companion object {
         @JvmStatic
@@ -42,10 +57,6 @@ class PayToContactFragment : BaseFragment() {
                 arguments = Bundle().apply {
                 }
             }
-    }
-
-    override fun getScreen(): ScreenEvent {
-        return PayToContactName
     }
 }
 
