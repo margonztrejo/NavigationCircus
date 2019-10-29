@@ -94,8 +94,6 @@ class PayToContactGraph(private val controller: NavController, private val finis
                     payToContactData.cardToken = event.cardToken
                     setPrevious(R.id.payToContactFragment)
                     controller.popBackStack()
-                    val action = PickCardDirections.actionPickCard2ToPayToContactFragment(payToContactData)
-                    controller.navigate(action)
                 }else{
                     setPrevious(R.id.payToContactFragment)
                     payToContactData.cardToken = event.cardToken
