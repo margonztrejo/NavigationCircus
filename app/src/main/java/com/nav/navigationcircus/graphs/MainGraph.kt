@@ -1,6 +1,7 @@
 package com.nav.navigationcircus.graphs
 
 import android.net.Uri
+import android.os.Bundle
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.navigation.NavController
@@ -10,11 +11,16 @@ import com.nav.navigationcircus.PayToContactFragmentEvent
 import com.nav.navigationcircus.R
 import com.nav.navigationcircus.TicketFragment
 import com.nav.navigationcircus.core.EventResult
+import com.nav.navigationcircus.core.NavigationResult
 import com.nav.navigationcircus.core.ScreenEvent
 import com.nav.navigationcircus.main.MainActivity
 import com.nav.navigationcircus.main.NavigationCoordinator
 
-class MainGraph(private val activity: MainActivity, private val controller: NavController): NavigationCoordinator.FlowGraph {
+class MainGraph(val activity: MainActivity, private val controller: NavController): NavigationCoordinator.FlowGraph {
+    override fun onResultFragment(fragmentReceiverResult: NavigationResult, result: ScreenEvent) {
+
+    }
+
     override fun onNavigationResult(eventResult: ScreenEvent) {
         val uri = "".toUri()
         navigateTo(uri)

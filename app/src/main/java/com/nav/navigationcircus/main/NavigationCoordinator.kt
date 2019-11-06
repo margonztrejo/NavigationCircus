@@ -1,8 +1,10 @@
 package com.nav.navigationcircus.main
 
 import android.net.Uri
+import android.os.Bundle
 import androidx.navigation.NavController
 import com.nav.navigationcircus.core.Features
+import com.nav.navigationcircus.core.NavigationResult
 import com.nav.navigationcircus.core.ScreenEvent
 import com.nav.navigationcircus.graphs.CashOutGraph
 import com.nav.navigationcircus.graphs.FinishFlowListener
@@ -40,10 +42,10 @@ class NavigationCoordinator(private val mainGraph: MainGraph, private val contro
             }
             Features.PAY_TO_CONTACT -> {
                 currentGraph =
-                    PayToContactGraph(controller, this)
+                    PayToContactGraph(this, controller, this)
             }
             Features.CASH_OUT -> {
-                currentGraph = CashOutGraph(controller, this)
+                currentGraph = CashOutGraph(this, controller, this)
             }
         }
 
@@ -59,8 +61,16 @@ class NavigationCoordinator(private val mainGraph: MainGraph, private val contro
 
     }
 
+    fun onResultFragment(fragmentReceiverResult:NavigationResult, result:ScreenEvent){
+        currentGraph?.onResultFragment(fragmentReceiverResult,result)
+    }
+
     fun onScreenEvent(screenEvent: ScreenEvent) {
         currentGraph?.consumeEvent(screenEvent)
+    }
+
+    fun navigateBackWithResult(result: ScreenEvent){
+        mainGraph.activity.navigateBackWithResult(result)
     }
 
     private var currentGraph: FlowGraph? = null
@@ -70,6 +80,7 @@ class NavigationCoordinator(private val mainGraph: MainGraph, private val contro
         fun consumeEvent(screenEvent: ScreenEvent)
         fun onBack(screenEvent: ScreenEvent)
         fun onNavigationResult(eventResult: ScreenEvent)
+        fun onResultFragment(fragmentReceiverResult: NavigationResult,result: ScreenEvent)
     }
 
 }

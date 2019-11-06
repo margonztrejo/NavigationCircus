@@ -6,12 +6,14 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavGraph
 import com.nav.navigationcircus.*
+import com.nav.navigationcircus.core.NavigationResult
 import com.nav.navigationcircus.core.ScreenEvent
 import com.nav.navigationcircus.graphs.FinishFlowListener
 import com.nav.navigationcircus.main.NavigationCoordinator
 
-class PayToContactGraph(private val controller: NavController, private val finishFlowListener: FinishFlowListener) :
+class PayToContactGraph(private val coordinator: NavigationCoordinator, private val controller: NavController, private val finishFlowListener: FinishFlowListener) :
     NavigationCoordinator.FlowGraph {
+
 
     override fun onNavigationResult(eventResult: ScreenEvent) {
 
@@ -75,12 +77,11 @@ class PayToContactGraph(private val controller: NavController, private val finis
         when(event){
             is ContactsFragmentEvent.SelectedContact -> {
                 payToContactData.user = event.user
+                setPrevious(R.id.contactFragment)
                 if(payToContactData.cardToken != null){
-                    setPrevious(R.id.payToContactFragment)
                     val action = ContactFragmentDirections.actionContactFragmentToPayToContactFragment(payToContactData)
                     controller.navigate(action)
                 }else{
-                    setPrevious(R.id.pickCard2)
                     controller.navigate(R.id.action_contactFragment_to_pickCard2)
                 }
             }
@@ -90,12 +91,10 @@ class PayToContactGraph(private val controller: NavController, private val finis
     private fun navigatePickCard(event: PickCardFragmentEvent){
         when(event){
             is PickCardFragmentEvent.OnCardSelected -> {
-                if(previous == R.id.pickCard2){
+                if(previous == R.id.payToContactFragment){
                     payToContactData.cardToken = event.cardToken
-                    setPrevious(R.id.payToContactFragment)
-                    controller.popBackStack()
+                    coordinator.navigateBackWithResult(event)
                 }else{
-                    setPrevious(R.id.payToContactFragment)
                     payToContactData.cardToken = event.cardToken
                     val action = PickCardDirections.actionPickCard2ToPayToContactFragment(payToContactData)
                     controller.navigate(action)
@@ -133,6 +132,11 @@ class PayToContactGraph(private val controller: NavController, private val finis
         graph?.startDestination = uriHandler!!.getStartDestination(payToContactData)
         controller.setGraph(graph!!, bundle)
     }
+
+    override fun onResultFragment(fragmentReceiverResult: NavigationResult, result: ScreenEvent) {
+        fragmentReceiverResult.onNavigationResult(result)
+    }
+
     private fun setPrevious(id: Int){
         previous = id
     }

@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import com.nav.navigationcircus.main.MainActivity
 import com.nav.navigationcircus.main.NavigationCoordinator
 
-open class BaseFragment: Fragment() {
+open class BaseFragment: Fragment(), NavigationResult {
+    override fun onNavigationResult(result: ScreenEvent) = Unit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         navCoordinator = (activity as MainActivity).navCoordinator

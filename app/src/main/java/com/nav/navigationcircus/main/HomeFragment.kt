@@ -27,11 +27,11 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<AppCompatButton>(R.id.btn_pay_to_contact).setOnClickListener {
-            val uri = "swapme.mx://".toUri()
+            val uri = "swapme.mx://payToContact".toUri()
             navCoordinator?.onEvent(uri)
         }
         view.findViewById<AppCompatButton>(R.id.btn_cash_out).setOnClickListener {
-            val uri = "swapme.mx://".toUri()
+            val uri = "swapme.mx://cashOut".toUri()
             navCoordinator?.onEvent(uri)
         }
     }

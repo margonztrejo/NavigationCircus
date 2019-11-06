@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import com.nav.navigationcircus.core.BaseFragment
+import com.nav.navigationcircus.core.NavigationResult
 import com.nav.navigationcircus.core.ScreenEvent
+import com.nav.navigationcircus.main.MainActivity
 
 
 class PickCard : BaseFragment() {

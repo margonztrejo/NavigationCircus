@@ -1,6 +1,7 @@
 package com.nav.navigationcircus.graphs
 
 import android.net.Uri
+import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import com.nav.navigationcircus.CashOutFragmentEvent
@@ -8,10 +9,16 @@ import com.nav.navigationcircus.PickCardFragmentEvent
 import com.nav.navigationcircus.PickCardNameEvent
 import com.nav.navigationcircus.R
 import com.nav.navigationcircus.core.EventResult
+import com.nav.navigationcircus.core.NavigationResult
 import com.nav.navigationcircus.core.ScreenEvent
 import com.nav.navigationcircus.main.NavigationCoordinator
 
-class CashOutGraph(private val controller: NavController, private val finishFlowListener: FinishFlowListener): NavigationCoordinator.FlowGraph {
+class CashOutGraph(private val coordinator: NavigationCoordinator, private val controller: NavController, private val finishFlowListener: FinishFlowListener): NavigationCoordinator.FlowGraph {
+
+    override fun onResultFragment(fragmentReceiverResult: NavigationResult, result: ScreenEvent) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onNavigationResult(eventResult: ScreenEvent) {
 
     }

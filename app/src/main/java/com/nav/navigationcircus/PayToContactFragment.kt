@@ -12,11 +12,19 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import com.nav.navigationcircus.core.BaseFragment
+import com.nav.navigationcircus.core.NavigationResult
 import com.nav.navigationcircus.core.ScreenEvent
 import com.nav.navigationcircus.paytocontact.PayToContactData
 
 
 class PayToContactFragment : BaseFragment() {
+
+    override fun onNavigationResult(result: ScreenEvent) {
+        if(result is PickCardFragmentEvent.OnCardSelected){
+            val token = result.cardToken
+            view?.findViewById<AppCompatTextView>(R.id.tv_card)?.text = "Card: $token"
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
